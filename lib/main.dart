@@ -52,7 +52,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                quiz_brain.questions[qNumber].questionText,
+                  quiz_brain.getQuestion(qNumber),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -86,7 +86,7 @@ class _QuizPageState extends State<QuizPage> {
                   // );
                   qNumber++;
 
-                  if(quiz_brain.questions[qNumber].questionAnswer==true){
+                  if(quiz_brain.getAnswer(qNumber)==true){
                     iconList.add(
                         Icon(
                               Icons.check,
@@ -123,7 +123,7 @@ class _QuizPageState extends State<QuizPage> {
                 setState(() {
                   qNumber++;
 
-                  if(quiz_brain.questions[qNumber].questionAnswer==false){
+                  if(quiz_brain.getAnswer(qNumber)==false){
                     iconList.add(
                       Icon(
                         Icons.check,
