@@ -1,11 +1,14 @@
 import 'dart:ffi';
 import 'dart:math';
 
-
-
 import 'package:flutter/material.dart';
 
+import 'quiz_brain.dart';
+
+
 void main() => runApp(Quizzler());
+
+Quiz_brain quiz_brain = Quiz_brain();
 
 class Quizzler extends StatelessWidget {
   @override
@@ -49,7 +52,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                questions[qNumber],
+                quiz_brain.questions[qNumber].questionText,
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -83,7 +86,7 @@ class _QuizPageState extends State<QuizPage> {
                   // );
                   qNumber++;
 
-                  if(answeres[qNumber]==true){
+                  if(quiz_brain.questions[qNumber].questionAnswer==true){
                     iconList.add(
                         Icon(
                               Icons.check,
@@ -120,7 +123,7 @@ class _QuizPageState extends State<QuizPage> {
                 setState(() {
                   qNumber++;
 
-                  if(answeres[qNumber]==false){
+                  if(quiz_brain.questions[qNumber].questionAnswer==false){
                     iconList.add(
                       Icon(
                         Icons.check,
