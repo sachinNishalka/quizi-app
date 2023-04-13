@@ -1,10 +1,6 @@
-import 'dart:ffi';
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 import 'quiz_brain.dart';
-
 
 void main() => runApp(Quizzler());
 
@@ -33,11 +29,7 @@ class QuizPage extends StatefulWidget {
 }
 
 class _QuizPageState extends State<QuizPage> {
-  List <Widget> iconList  = [];
-
-
-
-
+  List<Widget> iconList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +43,7 @@ class _QuizPageState extends State<QuizPage> {
             padding: EdgeInsets.all(10.0),
             child: Center(
               child: Text(
-                  quiz_brain.getQuestion(qNumber),
+                quiz_brain.getQuestion(),
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 25.0,
@@ -85,14 +77,14 @@ class _QuizPageState extends State<QuizPage> {
                   // );
                   quiz_brain.nextQuestion();
 
-                  if(quiz_brain.getAnswer( )==true){
+                  if (quiz_brain.getAnswer() == true) {
                     iconList.add(
-                        Icon(
-                              Icons.check,
-                              color: Colors.green,
-                            ),
+                      Icon(
+                        Icons.check,
+                        color: Colors.green,
+                      ),
                     );
-                  }else{
+                  } else {
                     iconList.add(
                       Icon(
                         Icons.close,
@@ -100,7 +92,6 @@ class _QuizPageState extends State<QuizPage> {
                       ),
                     );
                   }
-
                 });
               },
             ),
@@ -122,14 +113,14 @@ class _QuizPageState extends State<QuizPage> {
                 setState(() {
                   quiz_brain.nextQuestion();
 
-                  if(quiz_brain.getAnswer()==false){
+                  if (quiz_brain.getAnswer() == false) {
                     iconList.add(
                       Icon(
                         Icons.check,
                         color: Colors.green,
                       ),
                     );
-                  }else{
+                  } else {
                     iconList.add(
                       Icon(
                         Icons.close,
@@ -143,10 +134,7 @@ class _QuizPageState extends State<QuizPage> {
             ),
           ),
         ),
-        Row(
-          children: iconList
-        )
-
+        Row(children: iconList)
       ],
     );
   }
