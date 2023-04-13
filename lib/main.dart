@@ -38,7 +38,6 @@ class _QuizPageState extends State<QuizPage> {
 
 
 
-  int qNumber = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -84,9 +83,9 @@ class _QuizPageState extends State<QuizPage> {
                   //   ),
                   //
                   // );
-                  qNumber++;
+                  quiz_brain.nextQuestion();
 
-                  if(quiz_brain.getAnswer(qNumber)==true){
+                  if(quiz_brain.getAnswer( )==true){
                     iconList.add(
                         Icon(
                               Icons.check,
@@ -121,9 +120,9 @@ class _QuizPageState extends State<QuizPage> {
               ),
               onPressed: () {
                 setState(() {
-                  qNumber++;
+                  quiz_brain.nextQuestion();
 
-                  if(quiz_brain.getAnswer(qNumber)==false){
+                  if(quiz_brain.getAnswer()==false){
                     iconList.add(
                       Icon(
                         Icons.check,

@@ -1,7 +1,7 @@
 import 'question.dart';
 
 class Quiz_brain {
-
+  int _queNumber=0;
   List <Question> _questions = [
     Question('Some cats are actually allergic to humans', true),
     Question('You can lead a cow down stairs but not up stairs.', false),
@@ -30,12 +30,18 @@ class Quiz_brain {
         true),
   ];
 
-  String getQuestion(int queNumber){
-    return _questions[queNumber].questionText;
+  void nextQuestion(){
+    if(_queNumber < _questions.length - 1){
+      _queNumber++;
+    }
   }
 
-  bool getAnswer(int queNumber){
-    return _questions[queNumber].questionAnswer;
+  String getQuestion(){
+    return _questions[_queNumber].questionText;
+  }
+
+  bool getAnswer(){
+    return _questions[_queNumber].questionAnswer;
   }
 
 
