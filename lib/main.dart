@@ -33,30 +33,29 @@ class _QuizPageState extends State<QuizPage> {
 
   void checkAnswer(bool userPickedAnswer) {
     setState(() {
-      // iconList.add(
-      //   Icon(
-      //     Icons.check,
-      //     color: Colors.green,
-      //   ),
-      //
-      // );
-      quiz_brain.nextQuestion();
-      print(quiz_brain.isFinished());
-
-      if (quiz_brain.getAnswer() == userPickedAnswer) {
-        iconList.add(
-          Icon(
-            Icons.check,
-            color: Colors.green,
-          ),
-        );
+      // checking whether we are at the end of the questions
+      if (quiz_brain.isFinished()) {
+        // showing the alert
+        Alert(context: context, title: "Quiz App", desc: "Game Over!").show();
+        quiz_brain.reset();
+        iconList.clear();
       } else {
-        iconList.add(
-          Icon(
-            Icons.close,
-            color: Colors.red,
-          ),
-        );
+        if (quiz_brain.getAnswer() == userPickedAnswer) {
+          iconList.add(
+            Icon(
+              Icons.check,
+              color: Colors.green,
+            ),
+          );
+        } else {
+          iconList.add(
+            Icon(
+              Icons.close,
+              color: Colors.red,
+            ),
+          );
+        }
+        quiz_brain.nextQuestion();
       }
     });
   }
