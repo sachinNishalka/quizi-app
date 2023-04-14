@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'quiz_brain.dart';
 
 void main() => runApp(Quizzler());
@@ -30,6 +30,36 @@ class QuizPage extends StatefulWidget {
 
 class _QuizPageState extends State<QuizPage> {
   List<Widget> iconList = [];
+
+  void checkAnswer(bool userPickedAnswer) {
+    setState(() {
+      // iconList.add(
+      //   Icon(
+      //     Icons.check,
+      //     color: Colors.green,
+      //   ),
+      //
+      // );
+      quiz_brain.nextQuestion();
+      print(quiz_brain.isFinished());
+
+      if (quiz_brain.getAnswer() == userPickedAnswer) {
+        iconList.add(
+          Icon(
+            Icons.check,
+            color: Colors.green,
+          ),
+        );
+      } else {
+        iconList.add(
+          Icon(
+            Icons.close,
+            color: Colors.red,
+          ),
+        );
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,32 +97,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                setState(() {
-                  // iconList.add(
-                  //   Icon(
-                  //     Icons.check,
-                  //     color: Colors.green,
-                  //   ),
-                  //
-                  // );
-                  quiz_brain.nextQuestion();
-
-                  if (quiz_brain.getAnswer() == true) {
-                    iconList.add(
-                      Icon(
-                        Icons.check,
-                        color: Colors.green,
-                      ),
-                    );
-                  } else {
-                    iconList.add(
-                      Icon(
-                        Icons.close,
-                        color: Colors.red,
-                      ),
-                    );
-                  }
-                });
+                checkAnswer(true);
               },
             ),
           ),
@@ -110,25 +115,7 @@ class _QuizPageState extends State<QuizPage> {
                 ),
               ),
               onPressed: () {
-                setState(() {
-                  quiz_brain.nextQuestion();
-
-                  if (quiz_brain.getAnswer() == false) {
-                    iconList.add(
-                      Icon(
-                        Icons.check,
-                        color: Colors.green,
-                      ),
-                    );
-                  } else {
-                    iconList.add(
-                      Icon(
-                        Icons.close,
-                        color: Colors.red,
-                      ),
-                    );
-                  }
-                });
+                checkAnswer(false);
                 //The user picked false.
               },
             ),
