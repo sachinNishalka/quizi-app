@@ -15,9 +15,9 @@ Quizi App is a Flutter project that provides a simple quiz interface for users t
 
 ## Getting Started
 
-1. Clone the repository:
-2. Install the dependencies:
-3. Run the app:
+1. Clone the repository
+2. Install the dependencies
+3. Run the app
 
 
 ## Contributing
